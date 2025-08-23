@@ -6,7 +6,7 @@
 constexpr uint8_t BitEncryption::signature[BitEncryption::signatureSize];
 
 std::vector<uint8_t> BitEncryption::encrypt(const std::vector<uint8_t>& originalBytes, const std::vector<uint8_t>& keys) {
-	if (originalBytes.empty() || keys.empty() || keys.size() > static_cast<size_t>(0xFFFFFFFFull)) {
+	if (originalBytes.empty() || keys.empty()) {
 		return {};
 	}
 
