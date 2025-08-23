@@ -9,8 +9,8 @@ Lightweight C++ byte-array obfuscation using XOR, byte-reversal, and a trailing 
 &emsp;└─ [bit_encryption.cpp](src/bit_encryption.cpp)<br>
 [legacy/](legacy/)<br>
 &emsp;└─ [bit_encryption_legacy.cpp](legacy/bit_encryption_legacy.cpp)<br>
-[example/](example/)
-&emsp;└─ [example.cpp](example/example.cpp)
+[example/](example/)<br>
+&emsp;└─ [example.cpp](example/example.cpp)<br>
 [LICENSE](LICENSE)<br>
 [README.md](README.md)<br>
 
