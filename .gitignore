@@ -1,0 +1,6 @@
+src/output/
+cli/output/
+src/bit_encryption.o
+legacy/output/
+.vscode/
+.out/
