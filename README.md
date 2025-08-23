@@ -4,7 +4,7 @@ Lightweight C++ byte-array obfuscation using XOR, byte-reversal, and a trailing 
 
 ## Project structure
 
-BitEncryption/
+BitEncryption/<br>
 &emsp;├─ [LICENSE](LICENSE)
 &emsp;├─ [README.md](README.md)
 &emsp;├─ [src/](src/)<br>
