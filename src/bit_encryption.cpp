@@ -7,7 +7,7 @@ constexpr uint8_t BitEncryption::signature[BitEncryption::signatureSize];
 
 std::vector<uint8_t> BitEncryption::encrypt(const std::vector<uint8_t>& originalBytes, const std::vector<uint8_t>& keys) {
 	if (originalBytes.empty() || keys.empty() || keys.size() > static_cast<size_t>(0xFFFFFFFFull)) {
-		return errorMessage;
+		return {};
 	}
 
 	const size_t dataSize = originalBytes.size();
@@ -39,14 +39,14 @@ std::vector<uint8_t> BitEncryption::encrypt(const std::vector<uint8_t>& original
 
 std::vector<uint8_t> BitEncryption::decrypt(const std::vector<uint8_t>& encryptedBytes, const std::vector<uint8_t>& keys) {
 	if (keys.empty() || encryptedBytes.size() < static_cast<size_t>(signatureSize + 1)) {
-		return errorMessage;
+		return {};
 	}
 
 	const size_t totalSize = encryptedBytes.size();
 	const size_t dataSize = totalSize - static_cast<size_t>(signatureSize);
 
 	if (!std::equal(encryptedBytes.begin() + dataSize, encryptedBytes.end(), signature)) {
-		return errorMessage;
+		return {};
 	}
 
 	std::vector<uint8_t> bytes(encryptedBytes.begin(), encryptedBytes.begin() + dataSize);

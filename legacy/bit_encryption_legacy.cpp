@@ -3,7 +3,7 @@
 // and returns the resulting vector of encrypted bytes.
 // You can generate any amount of random keys using the generateKeys function.
 // The decrypt function takes the same parameters as the encrypt function, applies the same XOR-based mechanism, and returns the original bytes in a vector.
-// Decrypt function return an error message if decryption fails. (FATAL ERROR)
+// Decrypt and encrypt functions return an empty vector on failure.
 // This is just a small personal project to demonstrate basic encryption concepts. 
 // DO NOT USE FOR ACTUAL ENCRYPTION. AN ATTACKER THAT KNOWS WHAT THEY'RE DOING CAN EASILY CRACK THIS.
 
@@ -18,7 +18,6 @@ private:
 
     static constexpr short signatureSize = 3;
     static constexpr uint8_t signature[3] = { 0x3B, 0x2D, 0x29 };
-    const std::vector<uint8_t> errorMessage = { 'F', 'A', 'T', 'A', 'L', ' ', 'E', 'R', 'R', 'O', 'R' };
 
 public:
 
@@ -27,7 +26,7 @@ public:
 
         // Basic checks
         if (originalBytes.empty() || keys.empty() || keys.size() > static_cast<size_t>(0xFFFFFFFFull)) {
-            return errorMessage;
+            return {};
         }
 
         // Define constants
@@ -68,7 +67,7 @@ public:
 
         // Basic checks
         if (keys.empty() || encryptedBytes.size() < static_cast<size_t>(signatureSize + 1)) {
-            return errorMessage;
+            return {};
         }
 
         // Validate signature at the end
@@ -76,7 +75,7 @@ public:
         const size_t dataSize = totalSize - static_cast<size_t>(signatureSize);
 
         if (!std::equal(encryptedBytes.begin() + dataSize, encryptedBytes.end(), signature)) {
-            return errorMessage;
+            return {};
         }
 
         // Extract the encrypted bytes (without signature) and reverse it back
