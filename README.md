@@ -5,13 +5,13 @@ Lightweight C++ byte-array obfuscation using XOR, byte-reversal, and a trailing 
 ## Project structure
 
 BitEncryption/
-├─ [LICENSE](LICENSE)
-├─ [README.md](README.md)
-├─ [src/](src/)
-│  ├─ [bit_encryption.h](src/bit_encryption.h)
-│  └─ [bit_encryption.cpp](src/bit_encryption.cpp)
-└─ [legacy/](legacy/)
-	└─ [bit_encryption_legacy.cpp](legacy/bit_encryption_legacy.cpp)
+&emsp;├─ [LICENSE](LICENSE)
+&emsp;├─ [README.md](README.md)
+&emsp;├─ [src/](src/)<br>
+&emsp;│&emsp;├─ [bit_encryption.h](src/bit_encryption.h)
+&emsp;│&emsp;└─ [bit_encryption.cpp](src/bit_encryption.cpp)
+&emsp;└─ [legacy/](legacy/)<br>
+&emsp;&emsp; └─ [bit_encryption_legacy.cpp](legacy/bit_encryption_legacy.cpp)
 
 ## How it works (at a glance)
 
