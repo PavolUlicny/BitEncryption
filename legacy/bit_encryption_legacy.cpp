@@ -25,7 +25,7 @@ public:
     std::vector<uint8_t> encrypt(const std::vector<uint8_t>& originalBytes, const std::vector<uint8_t>& keys) {
 
         // Basic checks
-        if (originalBytes.empty() || keys.empty() || keys.size() > static_cast<size_t>(0xFFFFFFFFull)) {
+        if (originalBytes.empty() || keys.empty()) {
             return {};
         }
 
