@@ -4,3 +4,4 @@ src/bit_encryption.o
 legacy/output/
 .vscode/
 .out/
+example/output/
