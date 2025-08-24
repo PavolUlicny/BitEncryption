@@ -19,8 +19,10 @@ Lightweight C++ byte-array obfuscation using XOR, byte-reversal, and a trailing 
 Given input bytes and one or more key bytes:
 
 1. Builds an effective key stream of the same length as the input:
-	 - If there are fewer keys than input bytes, keys are repeated (cycled).
-	 - If there are more or equal keys, they are folded by XOR into positions modulo the input length.
+
+- If there are fewer keys than input bytes, keys are repeated (cycled).
+- If there are more or equal keys, they are folded by XOR into positions modulo the input length.
+
 2. XORs each input byte with the corresponding effective key byte.
 3. Reverses the resulting byte order.
 4. Appends a 3‑byte signature `0x3B, 0x2D, 0x29` to mark a valid ciphertext.
@@ -34,13 +36,13 @@ Error handling: on invalid input, methods return an empty vector.
 Class: `BitEncryption`
 
 - `std::vector<uint8_t> encrypt(const std::vector<uint8_t>& originalBytes, const std::vector<uint8_t>& keys);`
-	- Returns ciphertext with signature appended, or an empty vector on error.
+  - Returns ciphertext with signature appended, or an empty vector on error.
 
 - `std::vector<uint8_t> decrypt(const std::vector<uint8_t>& encryptedBytes, const std::vector<uint8_t>& keys);`
-	- Returns recovered plaintext, or an empty vector on error (e.g., missing/invalid signature).
+  - Returns recovered plaintext, or an empty vector on error (e.g., missing/invalid signature).
 
 - `std::vector<uint8_t> generateKeys(size_t count);`
-	- Generates `count` random bytes in `[1, 255]` using a thread‑local Mersenne Twister.
+  - Generates `count` random bytes in `[1, 255]` using `std::random_device` with `std::uniform_int_distribution` (unbiased). On mainstream Windows/Linux, `random_device` is typically backed by the OS CSPRNG, but this isn’t guaranteed by the C++ standard.
 
 Signature bytes and size (for reference): `0x3B, 0x2D, 0x29` (size 3).
 
@@ -67,4 +69,4 @@ g++ -std=c++17 your_main.cpp src/bit_encryption.cpp -o app
 
 ## License
 
-This project is released under The Unlicense (public domain). See [LICENSE](LICENSE) or https://unlicense.org.
+This project is released under The Unlicense (public domain). See [LICENSE](LICENSE) or <https://unlicense.org>.
