@@ -42,7 +42,7 @@ Class: `BitEncryption`
   - Returns recovered plaintext, or an empty vector on error (e.g., missing/invalid signature).
 
 - `std::vector<uint8_t> generateKeys(size_t count);`
-  - Generates `count` random bytes in `[1, 255]` using `std::random_device` with `std::uniform_int_distribution` (unbiased). On mainstream Windows/Linux, `random_device` is typically backed by the OS CSPRNG, but this isn’t guaranteed by the C++ standard.
+  - Generates `count` random bytes in `[0, 255]` using `std::random_device` with `std::uniform_int_distribution` (unbiased). On mainstream Windows/Linux, `random_device` is typically backed by the OS CSPRNG, but this isn’t guaranteed by the C++ standard.
 
 Signature bytes and size (for reference): `0x3B, 0x2D, 0x29` (size 3).
 
@@ -65,6 +65,7 @@ g++ -std=c++17 your_main.cpp src/bit_encryption.cpp -o app
 ## Notes and limitations
 
 - This is not secure encryption; it’s a simple XOR-based obfuscation with a fixed signature. Do not use for sensitive data.
+- Keys may include 0 values. Allowing 0 ensures a full 8 bits of entropy per byte; XOR by 0 occurs with probability 1/256 and is expected.
 - The key folding behavior when providing many keys is intentional; read the implementation if you need a different policy (e.g., truncate or hash keys).
 
 ## License

@@ -92,7 +92,7 @@ std::vector<uint8_t> BitEncryption::decrypt(const std::vector<uint8_t> &encrypte
 std::vector<uint8_t> BitEncryption::generateKeys(const size_t count)
 {
 	std::random_device rd;
-	std::uniform_int_distribution<int> dist(1, 255);
+	std::uniform_int_distribution<int> dist(0, 255);
 
 	std::vector<uint8_t> keys;
 	keys.reserve(count);

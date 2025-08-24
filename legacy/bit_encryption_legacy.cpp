@@ -120,12 +120,12 @@ public:
         return originalBytes;
     }
 
-    // Function to generate a set amount of random keys in range [1, 255] using std::random_device + uniform_int_distribution (unbiased).
+    // Function to generate a set amount of random keys in range [0, 255] using std::random_device + uniform_int_distribution (unbiased).
     std::vector<uint8_t> generateKeys(const size_t count)
     {
         // Set up the random number generator
         std::random_device rd;
-        std::uniform_int_distribution<int> dist(1, 255);
+        std::uniform_int_distribution<int> dist(0, 255);
 
         // Generate the keys
         std::vector<uint8_t> keys;
