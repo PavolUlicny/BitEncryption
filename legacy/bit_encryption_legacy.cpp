@@ -120,12 +120,11 @@ public:
         return originalBytes;
     }
 
-    // Function to generate a set amount of random keys in range [1, 255] using a C++ RNG. (fancy random number generator)
+    // Function to generate a set amount of random keys in range [1, 255] using std::random_device + uniform_int_distribution (unbiased).
     std::vector<uint8_t> generateKeys(const size_t count)
     {
-
         // Set up the random number generator
-        static thread_local std::mt19937 rng{std::random_device{}()};
+        std::random_device rd;
         std::uniform_int_distribution<int> dist(1, 255);
 
         // Generate the keys
@@ -133,7 +132,7 @@ public:
         keys.reserve(count);
         for (size_t i = 0; i < count; ++i)
         {
-            keys.push_back(static_cast<uint8_t>(dist(rng)));
+            keys.push_back(static_cast<uint8_t>(dist(rd)));
         }
 
         // Return the vector of generated keys

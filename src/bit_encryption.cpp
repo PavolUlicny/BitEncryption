@@ -91,14 +91,14 @@ std::vector<uint8_t> BitEncryption::decrypt(const std::vector<uint8_t> &encrypte
 
 std::vector<uint8_t> BitEncryption::generateKeys(const size_t count)
 {
-	static thread_local std::mt19937 rng{std::random_device{}()};
+	std::random_device rd;
 	std::uniform_int_distribution<int> dist(1, 255);
 
 	std::vector<uint8_t> keys;
 	keys.reserve(count);
 	for (size_t i = 0; i < count; ++i)
 	{
-		keys.push_back(static_cast<uint8_t>(dist(rng)));
+		keys.push_back(static_cast<uint8_t>(dist(rd)));
 	}
 	return keys;
 }
