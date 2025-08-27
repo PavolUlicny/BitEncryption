@@ -50,17 +50,18 @@ Signature bytes and size (for reference): `0x3B, 0x2D, 0x29` (size 3).
 ## Build and run
 
 Compile and link `src/bit_encryption.cpp` with your application and include `src/bit_encryption.h`.
+Replace example/example.cpp with your main.
 
 - MSVC (Developer Command Prompt / PowerShell):
 
 ```
-cl /std:c++17 /EHsc your_main.cpp src\bit_encryption.cpp /Fe:app.exe
+cl /std:c++17 /EHsc example/example.cpp src\bit_encryption.cpp /Fe:app.exe
 ```
 
 - g++/clang++ (MinGW or Unix-like environments):
 
 ```
-g++ -std=c++17 your_main.cpp src/bit_encryption.cpp -o app
+g++ -std=c++17 example/example.cpp src/bit_encryption.cpp -o app
 ```
 
 ## Notes and limitations
