@@ -13,6 +13,7 @@ Lightweight C++ byte-array obfuscation using XOR, byte-reversal, and a trailing 
 &emsp;└─ [example.cpp](example/example.cpp)<br>
 [LICENSE](LICENSE)<br>
 [README.md](README.md)<br>
+[.gitignore](.gitignore)
 
 ## How it works (at a glance)
 
